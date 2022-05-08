@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAoAAAAKAAgMAAABxoyGwAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAADFBMVEUAAAAAAAD//4D////2rsv/AAAAAXRSTlMAQObYZgAAAAFiS0dEAxEMTPIAAAAHdElNRQflAhMVOwsDvNyrAAABxUlEQVR42u3XQQ6DMAxFQS7JJXvK7oqEoI1xkiIzbx35zzbLIkmSJEmSJEmSJEmSJEmSJEmSJEmSJEnSHVvDAQICAgICAgICAgIC9rO9ws1DAwICAgICAgICAgJWBV60NaABAQEBAQEBAQEBAQGn2o6ogICAgICAgICAgICAfwLmlYCAgICAgICAgICAVYEzbCklICAgICAgICAgICBgYB0QEBAQEBAQEBAQELCfbciXqlkJCAgICAgICAgICPh04JAAAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQGfADzaAAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEvDcwzT89AAgICAgICAgICAgI+BuYUeZtgICAgICAgICAgICAUeX66fsTQEBAQEBAQEBAQEDACHC3flrDgWYbICAgICAgICAgIGB9YFx5sas2QEBAQEBAQEBAQMD6wMHKvA0QEBAQEBAQEBAQsD5wiLKnDRAQEBAQEBAQEBCwPnBTpqljbICAgICAgICAgICA9YE7apw1xQYICAgICAgICAgIWB+4KVubxwIEBAQEBAQEBAQEfAhQkiRJkiRJkiRJkiRJkiRJkiRJkiRJkqRob8lhbp11vZNqAAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDIxLTAyLTE5VDIxOjU4OjMxKzAwOjAwQ108lwAAACV0RVh0ZGF0ZTptb2RpZnkAMjAyMS0wMi0xOVQyMTo1NzozNiswMDowMAas4SgAAAAASUVORK5CYII="
+    />
+    <title>tanks</title>
+    <link rel="stylesheet" href="./style.css" />
+
+    <!-- load classes -->
+		<script src="./js/utils.js"></script>
+		<script src="./js/level.js"></script>
+    <script src="./js/Player.js"></script>
+    <script src="./js/Monster.js"></script>
+    <script src="./js/Bullet.js"></script>
+    <script src="./js/Explosion.js"></script>
+    <script src="./js/bg.js"></script>
+  </head>
+  <body>
+    <div class="cover">
+      <div>Use wasd or arrow keys to move. Use mouse to aim.</div>
+      <div class="spacer"></div>
+      <div>Your window is not focused.<br />Click to play</div>
+    </div>
+    <div class="stats">
+      <div class="money">
+        <div class="number">0</div> money
+      </div>
+			<div class="enemies">
+				<div class="number">0</div> enemies killed
+			</div>
+    </div>
+    <div class="dead">
+      <div>
+        Your score: <span class="score-final"></span><br />
+        Your high score: <span class="score-high"></span><br />Reload the page to play again.
+      </div>
+    </div>
+    <script src="../eruda.js"></script>
+    <script>
+      try {
+        eruda.init();
+        if (localStorage.getItem("eruda-auto-show") === "1") eruda.show();
+        window.addEventListener("keydown", e => {
+          const { key, ctrlKey } = e;
+          if (key === "e" && ctrlKey) {
+            e.preventDefault();
+            if (localStorage.getItem("eruda-auto-show") === "1") {
+              localStorage.setItem("eruda-auto-show", "0");
+              eruda.hide();
+            } else {
+              localStorage.setItem("eruda-auto-show", "1");
+              eruda.show();
+            }
+          }
+        });
+      } catch {}
+      // setInterval(() => history.go(0), 2000);
+    </script>
+    <script defer src="./js/main.js"></script>
+  </body>
+</html>
